@@ -26,6 +26,11 @@ let planPickerComponent = {
     components:{
         plan: planComponent,
     },
+    props:{
+        searchedPlan:{
+            type: String,
+        }
+    },
     data(){
         return{
             coffeeTypes:['cold coffee','hot coffee','bed coffee','black coffee'],
@@ -35,8 +40,12 @@ let planPickerComponent = {
     methods:{
         selectPlan(plan){
             this.selectedPlan = plan;
+        },
+        addThePlan(){
+            console.log(this.searchedPlan);
+            this.coffeeTypes.push(this.searchedPlan);
         }
-    }
+    },
 }
 
 
@@ -45,5 +54,12 @@ new Vue({
     el: "#app",
     components:{
         'plan-picker': planPickerComponent,
+    },
+    data(){
+        return{
+            searchVal: '',
+        }
+    },
+    methods:{
     }
 })

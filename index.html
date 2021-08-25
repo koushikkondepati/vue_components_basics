@@ -18,18 +18,18 @@
         </div>
         <div class="main-content">
             <div class="search-and-save">
-                <input type="text" class="search-box" placeholder="search coffee" />
-                <button class="btn1">Save</button>
+                <input type="text" class="search-box" v-model="searchVal" placeholder="search coffee" />
+                <button class="btn1" @click="$refs.kou.addThePlan()">Save</button>
             </div>
 
-            <plan-picker></plan-picker>
+            <plan-picker :searched-plan="searchVal" ref="kou"></plan-picker>
             
         </div>
     </div>
 
 
     <script type="text/x-template" id="plan-picker-template">
-        <div class="types-of-coffee">
+        <div class="types-of-coffee v-scrolling-div">
             <plan v-for="(coffee,index) in coffeeTypes" :key="index" :name="coffee" @select="selectPlan" :selected-plan="selectedPlan"></plan>
         </div>
     </script>
